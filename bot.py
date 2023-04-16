@@ -1,13 +1,6 @@
+import os
 from pyrogram import Client, filters
 from flask import Flask
-
-app = Flask(__name__)
-
-@app.route("/")
-def hello_world():
-    return "Hello, World!"
-
-app.run(host='0.0.0.0', port=8080)
 
 # Replace the values with your own API ID, API HASH and BOT TOKEN
 app_id = 21973813
@@ -17,8 +10,19 @@ bot_token = '5837194490:AAGvf78CyVNPMDFxg78mt4vk3-LMYmwtH_Y'
 # Create a new Pyrogram client instance
 client = Client("my_bot", app_id, api_hash, bot_token=bot_token)
 
+# Create a Flask app instance
+app = Flask(__name__)
 
-# Start the client
+# Define a route for the home page
+@app.route("/")
+def home():
+    return "Hello, World!"
+
+# Start the Flask app
+if __name__ == "__main__":
+    app.run(debug=False, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
+# Start the Pyrogram client
 client.start()
 
 # Define a handler function for /start command
@@ -26,6 +30,6 @@ client.start()
 def start(client, message):
     message.reply_text("Hello, welcome to my bot!")
 
-
 # Run the client until it's stopped
 client.run()
+
