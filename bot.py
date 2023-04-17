@@ -20,7 +20,7 @@ def home():
 
 # Start the Flask app
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 # Start the Pyrogram client
 client.start()
