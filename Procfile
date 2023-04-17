@@ -1,1 +1,3 @@
-gunicorn app:app & python3 bot.py
+web: gunicorn wsgi:app
+
+
