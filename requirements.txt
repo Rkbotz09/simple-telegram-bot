@@ -1,6 +1,7 @@
-Flask==2.1.1
+Flask==2.1.2
 Pyrogram==2.0.103
-tgcrypto
-
+tgcrypto 
+gunicorn==20.1.0
+aiohttp==3.8.1
 
 
