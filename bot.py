@@ -10,14 +10,16 @@ bot_token = '5837194490:AAGvf78CyVNPMDFxg78mt4vk3-LMYmwtH_Y'
 # Create a new Pyrogram client instance
 client = Client("my_bot", app_id, api_hash, bot_token=bot_token)
 
+
 # Define a handler function for /start command
 @client.on_message(filters.command("start"))
 def start(client, message):
     message.reply_text("Hello, welcome to my bot!")
 
-# Start the client
-client.start()
 
-# Run the Flask app
+# Run the client until it's stopped
 if __name__ == '__main__':
+    client.start()
     app.run()
+    client.run()
+
