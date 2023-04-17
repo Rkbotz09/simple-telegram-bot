@@ -19,11 +19,9 @@ def home():
     return "Hello, World!"
 
 # Start the Flask app
-if __name__ == "__main__":
-    app.run(debug=False)
 
 # Start the Pyrogram client
-client.start()
+
 
 # Define a handler function for /start command
 @client.on_message(filters.command("start"))
@@ -31,5 +29,7 @@ def start(client, message):
     message.reply_text("Hello, welcome to my bot!")
 
 # Run the client until it's stopped
-client.run()
+if __name__ == "__main__":
+    app.run(port=int(os.environ.get("PORT", 8080)))   
+    client.run()
 
